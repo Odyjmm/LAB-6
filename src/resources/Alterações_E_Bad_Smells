@@ -1,0 +1,18 @@
+1 - A classe Gerente esta com um unico metodo que faz todas as funcoes e pode ser quebrado (Long Method);
+2 - A classe Gerente tem comportamento que caracteriza Inveja de recurso das Classe Projeto e Cliente (Feature Envy) ;
+3 - No momento inicial, tanto a Classe Cliente quanto a Classe Projeto nao fazem nenhuma operacao que tenha impacto na execucao do codigo (Lazy Class);
+4 - A Classe Projeto esta com nomes ruins de variaveis;
+5 - No geral, esta bem dificil de enteder o que o codigo faz devido a algomeracao de informacoes numa classe e a total falta delas noutra.
+
+Alteracoes Propostas:
+
+Primeiro, foi feito um refatoramento das variaveis de Projeto, assim como a geracao de um construtor para a Classe;
+
+Em segundo lugar, a classe cliente nao estava fazendo nada, para resolver isso, haviam duas solucoes, remocao da classe ou,
+seguindo o que esta escrito na assinatura dos metodos, altera-la para atender a isso, com o cliente tendo uma forma de comunicacao
+para ser avisado do atraso no Projeto e com o Projeto guardando uma lista de Clientes. Foi escolhido o primeiro devido a nao alterar
+o retorno do codigo no final das contas. Isso resultou na remocao do retorno de uma lista de Clientes de Projeto e a necessidade do
+Gerente avisar aos Clientes que o Projeto esta atrassado.
+
+Por ultimo, o metodo checar foi movido para a classe Projeto, permitindo que ele se "auto-cheque", com a Classe Gerente
+repassando o tal metodo.
